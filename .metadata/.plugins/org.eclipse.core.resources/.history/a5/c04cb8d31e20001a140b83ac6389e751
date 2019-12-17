@@ -1,0 +1,38 @@
+package services;
+
+import javax.validation.Valid;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import dtos.UserDTO;
+import models.User;
+
+public class UserService {
+
+	public User getById(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Page<User> getPage(Pageable page) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public UserDTO create(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public UserDTO login(String username, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public UserDTO update(@Valid User user, int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

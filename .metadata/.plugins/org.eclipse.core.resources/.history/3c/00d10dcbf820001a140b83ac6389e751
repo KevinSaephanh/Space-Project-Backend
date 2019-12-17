@@ -1,0 +1,54 @@
+package security.filters;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.data.authentication.UserCredentials;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import dtos.UserDTO;
+import io.jsonwebtoken.lang.Collections;
+import security.config.JwtConfig;
+
+/*
+ * Authenticates a login request using the provided username and password
+ * A Jwt token will be returned upon successful authentication
+ * */
+public class AuthFilter extends UsernamePasswordAuthenticationFilter {
+	private AuthenticationManager authManager;
+	private JwtConfig jwtConfig;
+
+	public AuthFilter() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public AuthFilter(AuthenticationManager authManager, JwtConfig jwtConfig) {
+		super();
+		this.authManager = authManager;
+		this.jwtConfig = jwtConfig;
+	}
+
+	@Override
+	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
+
+		try {
+
+			UserDTO creds = new ObjectMapper().readValue(request.getInputStream(), UserDTO.class);
+			UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(creds.getUsername(),
+					creds.getPassword(), Collections.emptyList());
+			return authManager.authenticate(authToken);
+
+		} catch (IOException e) {
+
+			throw new RuntimeException(e);
+		}
+	}
+}

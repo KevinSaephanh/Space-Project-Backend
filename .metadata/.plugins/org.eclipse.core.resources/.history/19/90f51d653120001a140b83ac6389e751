@@ -1,0 +1,14 @@
+package web.filters;
+
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+public class AuthFilter extends UsernamePasswordAuthenticationFilter {
+	private AuthenticationManager authManager;
+	private JwtConfig jwtConfig;
+
+	public AuthFilter(AuthenticationManager authManager, JwtConfig jwtConfig) {
+		this.authManager = authManager;
+		this.jwtConfig = jwtConfig;
+	}
+}

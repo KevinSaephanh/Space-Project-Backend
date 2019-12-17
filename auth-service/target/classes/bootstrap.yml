@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: ${URL}
+    username: root
+    password: null
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+        id:
+          new_generator_mappings: false

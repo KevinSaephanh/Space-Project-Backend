@@ -1,0 +1,16 @@
+package repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import dtos.UserDTO;
+import models.User;
+
+public interface UserRepository extends JpaRepository<User, Integer> {
+	public UserDTO findById(int id);
+
+	public UserDTO findByUsernameAndPassword(String username, String password);
+
+	@Query("SELECT u FROM users u WHERE u.username = ?")
+	public User login(String username);
+}

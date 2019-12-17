@@ -1,0 +1,16 @@
+package repositories;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Repository;
+
+import dtos.UserDTO;
+import models.User;
+
+@Repository
+public class UserRepository extends JpaRepository<UserDTO, Integer> {
+
+	public UserDTO findById(int id);
+	
+	public UserDTO findByUsernameAndPassword(String username, String password);
+}

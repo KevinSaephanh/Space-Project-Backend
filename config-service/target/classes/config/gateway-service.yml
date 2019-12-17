@@ -1,0 +1,4 @@
+zuul:
+  routes:
+    # requests with context matching /astro/** will be routed to astro-service
+    astro-service: /astro/**

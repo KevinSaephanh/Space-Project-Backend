@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: config-service
+  profiles:    active:    - native
+    # native profile on config sets it to use a local file system (resource/config)
+    # default storage mechanism is a Git repository
+    
+server:  port: 8888

@@ -1,0 +1,54 @@
+package services;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.HttpClientErrorException;
+
+import dtos.UserDTO;
+import models.User;
+import repositories.UserRepository;
+
+@Service
+public class UserService {
+
+	@Autowired
+	private UserRepository userRepository;
+	
+	public User getById(int id) {
+		return userRepository.findById(id)
+				.orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
+	}
+
+	public Page<User> getPage(Pageable page) {
+		return userRepository.findAll(page);
+	}
+
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public UserDTO create(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public UserDTO login(String username, String password) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public UserDTO update(@Valid User user, int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public UserDTO delete(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
