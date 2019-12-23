@@ -18,9 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import dtos.AuthenticationRequest;
 import dtos.UserDTO;
-import models.User;
+import models.AppUser;
 import services.UserService;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -46,23 +45,18 @@ public class UserController {
 	@ResponseStatus(HttpStatus.OK)
 	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public Page<User> getUsersPage(Pageable page) {
+	public Page<AppUser> getUsersPage(Pageable page) {
 		return userService.getPage(page);
 	}
-	
+
 	@PostMapping(value = "/signup", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
-	public boolean create(@RequestBody User user) {
+	public boolean create(@RequestBody AppUser user) {
 		return userService.create(user);
 	}
 
-	@PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public UserDTO login(@RequestBody AuthenticationRequest user) {
-		return userService.login(user.getUsername(), user.getPassword());
-	}
-
 	@PatchMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public boolean update(@RequestBody User user, @PathVariable int id) {
+	public boolean update(@RequestBody AppUser user, @PathVariable int id) {
 		return userService.update(user, id);
 	}
 

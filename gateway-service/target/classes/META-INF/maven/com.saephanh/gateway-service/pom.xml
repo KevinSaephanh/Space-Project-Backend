@@ -18,6 +18,15 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.0</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-netflix-core -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

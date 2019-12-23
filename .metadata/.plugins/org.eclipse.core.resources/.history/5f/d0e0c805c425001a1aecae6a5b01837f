@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: gateway-service
+zuul:
+  routes:
+    auth-service:
+      # Map path to auth service
+      path: /auth/**
+      service-id: AUTH-SERVICE
+      
+      strip-prefix: false
+      
+      sensitive-headers: Cookie, Set-Cookie

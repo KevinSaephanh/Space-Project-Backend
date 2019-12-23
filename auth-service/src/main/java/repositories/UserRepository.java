@@ -1,14 +1,17 @@
 package repositories;
 
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import dtos.UserDTO;
-import models.User;
+import models.AppUser;
 
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<AppUser, Integer> {
 	public UserDTO findById(int id);
 
 	public UserDTO findByUsernameAndPassword(String username, String password);
 
-	public User findByUsername(String username);
+	public AppUser findByUsername(String username);
+
+	public User save(User user);
 }

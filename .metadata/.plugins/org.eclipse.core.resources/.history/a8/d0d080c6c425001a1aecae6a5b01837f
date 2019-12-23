@@ -1,0 +1,6 @@
+package com.config;
+
+@EnableWebSecurity
+public class SecurityConfig {
+
+}

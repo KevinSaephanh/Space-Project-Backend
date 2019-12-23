@@ -1,0 +1,21 @@
+package security.config;
+
+import org.springframework.beans.factory.annotation.Value;
+
+public class JwtConfig {
+	private static final String HEADER = "Authorization";
+
+	private static final String PREFIX = "Bearer ";
+
+	private static final long EXPIRATION_TIME = 2 * 60 * 60 * 1000;
+
+	@Value("${JWT_SECRET}")
+	private String secret;
+
+	private JwtConfig() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	
+}
