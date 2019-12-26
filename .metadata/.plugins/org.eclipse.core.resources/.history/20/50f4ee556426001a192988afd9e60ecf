@@ -1,0 +1,19 @@
+spring:
+  application:    name: auth-service
+  datasource:
+    driverClassName: org.postgresql.Driver
+    username: ${GM_ROLE}
+    password: ${GM_PASS}
+    url: ${GM_URL}
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: validate
+      temp:
+          use_jdbc_metadata_defaults: false
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+server:  port: 9100
+eureka:  client:    service-url:      default-zone: http://localhost:8761/eureka

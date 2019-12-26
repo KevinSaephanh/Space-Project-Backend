@@ -1,5 +1,0 @@
-package security.util;
-
-public class JwtGenerator {
-
-}

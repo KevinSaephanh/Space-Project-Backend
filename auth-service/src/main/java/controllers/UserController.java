@@ -18,13 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import dtos.UserDTO;
 import models.AppUser;
 import services.UserService;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("users")
+@RequestMapping("/users")
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class UserController {
 	private UserService userService;
@@ -38,9 +37,16 @@ public class UserController {
 	@ResponseStatus(HttpStatus.OK)
 	@PreAuthorize("hasRole('ADMIN')")
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public UserDTO getUser(@PathVariable int id) {
+	public AppUser getUser(@PathVariable int id) {
 		return userService.getById(id);
 	}
+	
+	@ResponseStatus(HttpStatus.OK)
+	  @PreAuthorize("hasRole('ADMIN')")
+	  @GetMapping(value = "/username/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
+	  public AppUser getByUsername(@PathVariable String username) {
+	    return userService.findByUsername(username);
+	  }
 
 	@ResponseStatus(HttpStatus.OK)
 	@PreAuthorize("hasRole('ADMIN')")

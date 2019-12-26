@@ -22,7 +22,7 @@ public class JwtConfig {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public String getUri() {
 		return uri;
 	}
@@ -42,5 +42,4 @@ public class JwtConfig {
 	public String getSecret() {
 		return secret;
 	}
-
 }

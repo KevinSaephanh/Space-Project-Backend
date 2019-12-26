@@ -1,7 +1,0 @@
-package web.filters;
-
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
-public class AuthFilter extends UsernamePasswordAuthenticationFilter {
-
-}

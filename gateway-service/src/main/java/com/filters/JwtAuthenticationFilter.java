@@ -31,23 +31,20 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws ServletException, IOException {
 
-		// 1. get the authentication header. Tokens are supposed to be passed in the
-		// authentication header
+		// Get the authentication header containing the token
 		String header = request.getHeader(jwtConfig.getHeader());
 
-		// 2. validate the header and check the prefix
+		// validate the header and check the prefix
 		if (header == null || !header.startsWith(jwtConfig.getPrefix())) {
-			chain.doFilter(request, response); // If not valid, go to the next filter.
+			chain.doFilter(request, response); 
 			return;
 		}
 
-		// 3. Get the token
+		// Get the token
 		String token = header.replace(jwtConfig.getPrefix(), "");
 
-		try { // exceptions might be thrown in creating the claims if for example the token is
-				// expired
-
-			// 4. Validate the token
+		try {
+			// Validate the token
 			Claims claims = Jwts.parser().setSigningKey(jwtConfig.getSecret().getBytes()).parseClaimsJws(token)
 					.getBody();
 
@@ -56,11 +53,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 				@SuppressWarnings("unchecked")
 				List<String> authorities = (List<String>) claims.get("authorities");
 
-				// 5. Create auth object
+				// Create auth object
 				UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(username, null,
 						authorities.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
 
-				// 6. Authenticate the user
+				// Authenticate the user
 				SecurityContextHolder.getContext().setAuthentication(auth);
 			}
 
