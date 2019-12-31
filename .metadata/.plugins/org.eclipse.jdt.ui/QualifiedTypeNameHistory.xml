@@ -26,7 +26,6 @@
 <fullyQualifiedTypeName name="models.AppUser"/>
 <fullyQualifiedTypeName name="security.config.JwtConfig"/>
 <fullyQualifiedTypeName name="org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder"/>
-<fullyQualifiedTypeName name="org.springframework.security.core.userdetails.User"/>
 <fullyQualifiedTypeName name="org.springframework.security.core.authority.AuthorityUtils"/>
 <fullyQualifiedTypeName name="java.util.Collections"/>
 <fullyQualifiedTypeName name="io.jsonwebtoken.Jwts"/>
@@ -36,6 +35,14 @@
 <fullyQualifiedTypeName name="org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter"/>
 <fullyQualifiedTypeName name="org.springframework.http.HttpMethod"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
-<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="security.util.JwtGenerator"/>
 <fullyQualifiedTypeName name="org.springframework.web.filter.OncePerRequestFilter"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="exceptions.BadRequestException"/>
+<fullyQualifiedTypeName name="java.util.Collection"/>
+<fullyQualifiedTypeName name="org.springframework.security.core.userdetails.User"/>
+<fullyQualifiedTypeName name="dtos.UserPrincipal"/>
+<fullyQualifiedTypeName name="exceptions.UserNotFoundException"/>
+<fullyQualifiedTypeName name="exceptions.UsernameAlreadyExistsException"/>
+<fullyQualifiedTypeName name="exceptions.EmailAlreadyExistsException"/>
 </qualifiedTypeNameHistroy>
