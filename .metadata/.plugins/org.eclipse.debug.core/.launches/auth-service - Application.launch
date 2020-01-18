@@ -8,12 +8,13 @@
 </listAttribute>
 <mapAttribute key="org.eclipse.debug.core.environmentVariables">
 <mapEntry key="JWT_SECRET" value="SuperDuperDaddyDuderSecretKeyForMe"/>
+<mapEntry key="NASA_KEY" value="67LwhkO8aCwK13BL70hLJHDr0B47i8Dxi62fxBlU"/>
 <mapEntry key="URL" value="jdbc:postgresql://ec2-18-206-54-115.compute-1.amazonaws.com:5432/postgres"/>
 <mapEntry key="ZUUL_ACCESS_HEADER" value="ZuulAccessHeaderForThisProject"/>
 </mapAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.springframework.ide.eclipse.boot.launch.BootMavenClassPathProvider"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="Application"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="auth-service"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="nasa-service"/>
 <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.springframework.ide.eclipse.boot.launch.BootMavenSourcePathProvider"/>
 <stringAttribute key="process_factory_id" value="org.springframework.ide.eclipse.boot.launch.process.BootProcessFactory"/>
 <booleanAttribute key="spring.boot.ansi.console" value="true"/>

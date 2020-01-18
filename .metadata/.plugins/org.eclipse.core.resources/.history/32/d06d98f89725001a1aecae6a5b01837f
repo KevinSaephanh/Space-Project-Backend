@@ -1,7 +1,0 @@
-package security.util;
-
-import java.io.Serializable;
-
-public class JwtTokenUtil implements Serializable {
-	
-}
