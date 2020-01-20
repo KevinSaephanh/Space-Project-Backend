@@ -7,13 +7,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="gateway-service" />
-        <module name="discovery-service" />
+        <module name="config-server" />
         <module name="auth-service" />
         <module name="nasa-service" />
+        <module name="discovery-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="auth-service" target="1.8" />
+      <module name="config-server" target="1.8" />
       <module name="config-service" target="1.8" />
       <module name="discovery-service" target="1.8" />
       <module name="gateway-service" target="1.8" />
@@ -23,6 +25,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="auth-service" options="-parameters" />
+      <module name="config-server" options="-parameters" />
       <module name="config-service" options="-parameters" />
       <module name="discovery-service" options="-parameters" />
       <module name="gateway-service" options="-parameters" />
