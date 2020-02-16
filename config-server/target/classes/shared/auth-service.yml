@@ -1,0 +1,7 @@
+spring:
+  data:
+    # postgres
+server:
+  servlet:
+    context-path: /uaa
+  port: 8081

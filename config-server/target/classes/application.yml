@@ -1,7 +1,12 @@
 spring:
   application:
-    name: config-service
+    name: config-server
   profiles:    
     active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/shared # location of config files
 server:  
   port: 8888

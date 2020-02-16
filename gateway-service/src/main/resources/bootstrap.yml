@@ -1,6 +1,0 @@
-spring:
-  application:
-    name: gateway-service
-zuul:
-  routes:
-    auth-service: /users/**
