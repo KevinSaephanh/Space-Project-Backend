@@ -11,9 +11,17 @@ eureka:
       hostname: localhost
 server:
   port: 8662
-#zuul:
-#  routes:
-#    auth-service:
-#     path: /users/**
-#     serviceId: auth-service
-#     stripPrefix: true
+zuul:
+  host:
+    connect-timeout-millis: 5000000
+    socket-timeout-millis: 5000000
+  ignoredServices: '*'
+  routes:
+    auth-service:
+     path: /users/**
+     serviceId: auth-service
+     stripPrefix: true
+    nasa-service:
+      path: /nasa/**
+      serviceId: nasa-service
+      stripPrefix: true
