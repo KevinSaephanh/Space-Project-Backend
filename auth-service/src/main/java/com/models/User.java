@@ -29,14 +29,14 @@ public class User implements Serializable {
 	@Column(nullable = false, length = 100)
 	private String password;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "role_id", columnDefinition = "default '1'")
-	private Role role;
+	@NotBlank
+	@Column(nullable = false, length = 100)
+	private String role;
 
 	public User() {
 	}
 
-	public User(int id, @NotBlank String username, @Email @NotBlank String email, @NotBlank String password, Role role) {
+	public User(int id, @NotBlank String username, @Email @NotBlank String email, @NotBlank String password, @NotBlank String role) {
 		this.id = id;
 		this.username = username;
 		this.email = email;
@@ -80,11 +80,11 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 
@@ -95,7 +95,7 @@ public class User implements Serializable {
 				", username='" + username + '\'' +
 				", email='" + email + '\'' +
 				", password='" + password + '\'' +
-				", role=" + role +
+				", role='" + role + '\'' +
 				'}';
 	}
 }

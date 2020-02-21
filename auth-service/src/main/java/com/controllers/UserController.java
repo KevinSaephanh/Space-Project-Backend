@@ -1,26 +1,26 @@
 package com.controllers;
 
+import com.dtos.LoginDTO;
+import com.dtos.UserDTO;
+import com.filters.JwtToken;
 import com.models.User;
 import com.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/users")
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@CrossOrigin
 public class UserController {
-    private UserService userService;
-
     @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+    private UserService userService;
 
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasRole('ADMIN')")
@@ -39,16 +39,25 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping(value = "/username/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public User getByUsername(@PathVariable String username) {
-        return userService.findByUsername(username);
+    public UserDetails getByUsername(@PathVariable String username) {
+        return userService.loadUserByUsername(username);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public User register(@RequestBody User user) {
-        return userService.addUser(user);
+    @PostMapping()
+    public ResponseEntity<?> addUser(@RequestBody UserDTO user) {
+        user = userService.addUser(user);
+        if (user == null)
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            value = "/login")
+    public ResponseEntity<?> login(@RequestBody LoginDTO user) throws Exception {
+        return ResponseEntity.ok(userService.login(user));
     }
 
     @ResponseStatus(HttpStatus.OK)

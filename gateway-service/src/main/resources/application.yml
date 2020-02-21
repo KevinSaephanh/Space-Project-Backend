@@ -15,7 +15,6 @@ zuul:
   host:
     connect-timeout-millis: 5000000
     socket-timeout-millis: 5000000
-  ignoredServices: '*'
   routes:
     auth-service:
      path: /users/**

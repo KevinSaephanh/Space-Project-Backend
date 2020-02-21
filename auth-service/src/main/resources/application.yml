@@ -27,6 +27,9 @@ eureka:
   instance:
     hostname: localhost
 
-# dev profile configuration
+jwt:
+  token:
+    secret-key: SUPERDUPERSECRETKEY
+
 server:
   port: 8255
